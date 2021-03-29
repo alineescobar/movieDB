@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MovieList: View {
     var body: some View {
-        List(movies, id: \.title) { movie in
-            MovieRow(movie: movie)
-        }
+            List(movies, id: \.title) { movie in
+                    MovieRow(movie: movie)
+            }
     }
 }
 

@@ -10,47 +10,44 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        VStack{
+        NavigationView{
             VStack{
-                HStack{
-                    Text("MovieDB")
-                        .font(.largeTitle)
-                        .padding(.all, 5)
-                        .frame(alignment: .leading)
-                    Spacer()
+                VStack{
+                    SearchBar()
+                        .navigationBarTitle("Movie DB")
                 }
-                SearchBar()
-                
-            }
-            Divider()
-            VStack{
-                HStack{
-                    Text("Now Playing")
-                        .font(.title3)
-                        .padding(.all, 5)
-                        .frame(alignment: .leading)
-                    Spacer()
-                    NavigationLink(destination: AllTheMovies()) {
-                        Text("See all")
-                            .padding(5)
+                VStack{
+                    HStack{
+                        Text("Now Playing")
                             .font(.title3)
+                            .padding(.all, 5)
+                            .frame(alignment: .leading)
+                        Spacer()
+                        NavigationLink(destination: AllTheMovies()) {
+                            Text("See all")
+                                .padding(5)
+                                .font(.title3)
+                        }
+                    }
+                    HStack{
+                        MovieListColumn()
                     }
                 }
+                
                 HStack{
-                    MovieListColumn()
-                        .padding(.all, 5)
+                    Text("Popular Movies")
+                        .font(.title3)
+                        .frame(alignment: .leading)
+                    Spacer()
                 }
-            }
-            
-            Divider()
-            HStack{
-                Text("Popular Movies")
-                    .font(.title3)
-                    .frame(alignment: .leading)
-                Spacer()
-            }
-            HStack{
-                MovieList()
+                VStack{
+                    List(movies, id: \.title) { movie in
+                        NavigationLink(destination: MovieDetails(movie: movie)){
+                            MovieRow(movie: movie)
+                        }
+                    }
+                }
+                
             }
         }
     }

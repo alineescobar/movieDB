@@ -12,7 +12,9 @@ struct MovieListColumn: View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(movies, id: \.title) { movie in
-                    MovieColumn(movie: movie)
+                    NavigationLink(destination: MovieDetails(movie: movie)) {
+                        MovieColumn(movie: movie)
+                    }
                 }
             }
         }
