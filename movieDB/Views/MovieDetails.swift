@@ -25,7 +25,6 @@ struct MovieDetails: View {
                     HStack {
                         Text(movie.title)
                             .font(.title2)
-                            .padding(5)
                             .frame(alignment: .leading)
                         Spacer()
                     }
@@ -47,20 +46,26 @@ struct MovieDetails: View {
             VStack{
                 HStack {
                     Text("Overview")
+                        .padding(.leading, 15)
+                        .padding(.top, 5)
+                        .padding(.bottom, 10)
                         .frame(alignment: .leading)
                     Spacer()
                 }
                 
                 HStack{
                     Text("Release date: \(String(movie.year))")
+                        .padding(.leading, 15)
+                        .padding(.bottom, 10)
                     Text("Duration: \(movie.duration)")
-                        .frame(alignment: .leading)
+                        .padding(.bottom, 10)
                     Spacer()
                     
                 }
                 Text(movie.description)
+                    .multilineTextAlignment(.leading)
                     .font(.body)
-                    .padding(5)
+                    .padding(.all, 15)
                     .frame(alignment: .leading)
                 Spacer()
             }
